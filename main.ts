@@ -17,11 +17,14 @@ function createWindow(): BrowserWindow {
     y: 0,
     width: size.width,
     height: size.height,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
     },
   });
+
+  win.maximize();
 
   if (serve) {
 
