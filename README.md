@@ -7,6 +7,7 @@ Bootstrap and package your project with Angular 10 and Electron 9 (Typescript + 
 Currently runs with:
 
 - Angular v10.0.3
+- Material v10.0.1
 - Electron v9.1.0
 - Electron Builder v22.7.0
 
