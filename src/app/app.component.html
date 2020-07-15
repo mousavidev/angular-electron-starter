@@ -1,7 +1,4 @@
 <ng-container [ngTemplateOutlet]="tplTitlebar"></ng-container>
-<ng-container [ngTemplateOutlet]="tplMenu"></ng-container>
-
-<mat-divider></mat-divider>
 
 <main class="main-content">
     <router-outlet></router-outlet>
@@ -12,6 +9,9 @@
         <button mat-icon-button routerLink="/home">
             <mat-icon>weekend</mat-icon>
         </button>
+        
+        <ng-container [ngTemplateOutlet]="tplMenu"></ng-container>
+
         <span class="flex-spacer window-titlebar">Easy Order</span>
         <div class="window-controls-container">
             <button class="window-icon" mat-icon-button (click)="minimizeApp()">
