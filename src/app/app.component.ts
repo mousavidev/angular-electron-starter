@@ -1,11 +1,11 @@
-import { Component, NgZone, Renderer2, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, NgZone, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { log } from 'console';
+import { AboutService } from './about';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent {
     private domSanitizer: DomSanitizer,
     private electronService: ElectronService,
     private translate: TranslateService,
-    private ren: Renderer2,
+    private aboutService: AboutService,
     private zone: NgZone
   ) {
     this.translate.setDefaultLang('en');
@@ -76,8 +76,13 @@ export class AppComponent {
     this.currentWindow.close();
   }
 
-  openDevTools(): void {
-    this.currentWindow.webContents.openDevTools();
+  toggleDevTools(): void {
+    const webContents = this.currentWindow.webContents;
+    if(webContents.isDevToolsOpened()) {
+      this.currentWindow.webContents.closeDevTools();
+    } else {
+      this.currentWindow.webContents.openDevTools();
+    }
   }
 
   buttonMenuEnter(trigger: MatMenuTrigger): void {
@@ -93,5 +98,9 @@ export class AppComponent {
 
   menuClosed(): void {
     this.prevMenuTrigger = null;
+  }
+
+  openAboutWindow(): void {
+    this.aboutService.showWindow();
   }
 }

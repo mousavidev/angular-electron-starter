@@ -6,8 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AboutModule } from "./about";
 
 import { AppMaterialModule } from "./app-material.module";
 import { AppRoutingModule } from './app-routing.module';
@@ -27,12 +29,13 @@ export function HttpTranslateLoaderFactory(http: HttpClient): TranslateHttpLoade
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
-    AppMaterialModule,
     AppRoutingModule,
+    AppMaterialModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -40,7 +43,7 @@ export function HttpTranslateLoaderFactory(http: HttpClient): TranslateHttpLoade
         deps: [HttpClient]
       }
     }),
-    BrowserAnimationsModule
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

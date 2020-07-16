@@ -33,6 +33,7 @@
         <mat-menu #fileMenu="matMenu" direction="down" yPosition="below" hasBackdrop="false">
             <button mat-menu-item>New</button>
             <button mat-menu-item>Open</button>
+            <mat-divider></mat-divider>
             <button mat-menu-item (click)="closeApp()">Close</button>
         </mat-menu>
 
@@ -40,23 +41,27 @@
         <mat-menu #editMenu="matMenu" direction="down" yPosition="below" hasBackdrop="false">
             <button mat-menu-item>Undo</button>
             <button mat-menu-item>Redo</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>Cut</button>
+            <button mat-menu-item>Copy</button>
+            <button mat-menu-item>Paste</button>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="viewMenu" #viewMenuTrigger="matMenuTrigger" #viewMenuButton (mouseenter)="buttonMenuEnter(viewMenuTrigger)" (menuOpened)="menuOpened(viewMenuTrigger)" (menuClosed)="menuClosed()">View</button>
         <mat-menu #viewMenu="matMenu" direction="down" yPosition="below" hasBackdrop="false">
             <button mat-menu-item>Search</button>
-            <button mat-menu-item>Tabs</button>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="windowMenu" #windowMenuTrigger="matMenuTrigger" #windowMenuButton (mouseenter)="buttonMenuEnter(windowMenuTrigger)" (menuOpened)="menuOpened(windowMenuTrigger)" (menuClosed)="menuClosed()">Window</button>
         <mat-menu #windowMenu="matMenu" direction="down" yPosition="below" hasBackdrop="false">
-            <button mat-menu-item>Show Sidebar</button>
+            <button mat-menu-item (click)="toggleDevTools()">Toggle Developer Tools</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>Full screen</button>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="helpMenu" #helpMenuTrigger="matMenuTrigger" #helpMenuButton (mouseenter)="buttonMenuEnter(helpMenuTrigger)" (menuOpened)="menuOpened(helpMenuTrigger)" (menuClosed)="menuClosed()">Help</button>
         <mat-menu #helpMenu="matMenu" direction="down" yPosition="below" hasBackdrop="false">
-            <button mat-menu-item>About</button>
-            <button mat-menu-item (click)="openDevTools()">Debugging</button>
+            <button mat-menu-item (click)="openAboutWindow()">About</button>
         </mat-menu>
     </div>
 </ng-template>
